@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gowtham | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0f1115;
+      --surface: #171a21;
+      --surface-2: #1e222b;
+      --border: #2a2f3a;
+      --text: #e8e6e1;
+      --muted: #8b93a1;
+      --accent: #5eead4;
+      --accent-dim: #2d6b62;
+      --max-w: 1100px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.01em;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* NAV */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 17, 21, 0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .navlinks a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .navlinks a:hover {
+      color: var(--accent);
+    }
+
+    .menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    .menu-btn span {
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      display: block;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 110px 0 90px;
+    }
+
+    .hero .wrap {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .hero-text {
+      flex: 1.2;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+      display: inline-block;
+    }
+
+    .hero h1 {
+      font-size: 3.4rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 480px;
+      margin-bottom: 32px;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+      border: 1px solid var(--border);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0f1115;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-avatar {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-avatar img {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      width: 260px;
+      height: 260px;
+
+    }
+
+    .avatar-frame {
+      width: 260px;
+      height: 260px;
+      border-radius: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 3.2rem;
+      color: var(--accent);
+    }
+
+    /* SECTION HEADINGS */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-tag {
+      color: var(--accent);
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+
+    /* ABOUT */
+    .about p {
+      color: var(--muted);
+      max-width: 700px;
+      font-size: 1.05rem;
+    }
+
+    /* PROJECTS */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 26px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent-dim);
+      transform: translateY(-4px);
+    }
+
+    .project-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      background: var(--surface-2);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 16px;
+      font-size: 0.9rem;
+    }
+
+    .project-links a {
+      color: var(--muted);
+      border-bottom: 1px solid transparent;
+    }
+
+    .project-links a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      text-align: center;
+      color: var(--text);
+    }
+
+    .resume-row {
+      margin-top: 36px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* CONTACT / FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 70px 0 40px;
+    }
+
+    .contact-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .contact-info p,
+    .contact-info a {
+      color: var(--muted);
+      display: block;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .contact-info a:hover {
+      color: var(--accent);
+    }
+
+    .copyright {
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 800px) {
+      .hero .wrap {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 36px;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .btn-row {
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+
+      .avatar-frame {
+        width: 180px;
+        height: 180px;
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .navlinks {
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--surface);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 18px;
+        border-bottom: 1px solid var(--border);
+        display: none;
+      }
+
+      .navlinks.open {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: flex;
+      }
+
+      section {
+        padding: 56px 0;
+      }
+
+      .hero {
+        padding: 70px 0 56px;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav class="nav">
+      <div class="logo">Gowtham Payyavula</div>
+      <ul class="navlinks" id="navlinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-text">
+        <span class="eyebrow mono"> BSc Computer Science Student</span>
+        <h1>Hi, I'm Gowtham.<br>I build things for the web.</h1>
+        <p>I am a passionate Computer Science graduate with a strong interest in web development. I enjoy building
+          responsive and user-friendly websites while continuously learning new technologies. I am currently seeking an
+          entry-level software developer opportunity where I can apply my skills, gain hands-on
+          experience, and grow as a developer.</p>
+        <div class="btn-row">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-avatar">
+        <div class="avatar-frame mono"><img
+            src="./gowthamimg1.jpg"
+            alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <span class="section-tag mono">01</span>
+      <h2 class="section-title">About Me</h2>
+      <p>I am a Computer Science graduate with a passion for web and software development. I enjoy learning new
+        technologies and building responsive, user-friendly applications that solve real-world problems. My internship
+        and personal projects have helped me strengthen my technical skills and gain practical experience in full-stack
+        development. I am always eager to learn, take on new challenges, and continue growing as a software developer.
+      </p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <span class="section-tag mono">02</span>
+      <h2 class="section-title">Projects</h2>
+      <div class="project-grid">
+
+        <div class="project-card">
+          <h3>Project One</h3>
+          <p>A responsive Netflix-inspired web application currently in the early stages of development. The project
+            focuses on recreating the user interface while improving my skills in modern web development. Through this
+            project, I am strengthening my understanding of responsive design, component-based architecture, and clean
+            coding practices.</p>
+          <div class="tag-row">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+          <div class="project-links">
+            <a href="https://netflix-clone-pink-phi-12.vercel.app/  ">Live Demo</a>
+            <a href="https://github.com/gowtham-payyavula/Netflix-clone">GitHub</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <h3>Project Two</h3>
+          <p>A full-stack restaurant ordering application developed during my internship. It provided hands-on
+            experience in real-world web development, helping me strengthen my front-end and back-end skills, apply
+            academic knowledge to practical projects, improve problem-solving abilities, and learn modern development
+            practices in a professional environment.</p>
+          <div class="tag-row">
+            <span class="tag">JavaScript</span>
+
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Express</span>
+            <span class="tag">mongodb</span>
+
+
+          </div>
+          <div class="project-links">
+            <a href="https://tastetrack-bice.vercel.app/">Live Demo</a>
+            <a href="https://github.com/gowtham-payyavula/tastetrack">GitHub</a>
+          </div>
+        </div>
+
+        <!-- <div class="project-card">
+        <h3>Project Three</h3>
+        <p>Short description of what this project does and the problem it solves.</p>
+        <div class="tag-row">
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+        </div>
+        <div class="project-links">
+          <a href="#">Live Demo</a>
+          <a href="https://github.com/gowtham-payyavula">GitHub</a>
+        </div>
+      </div> -->
+
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <span class="section-tag mono">03</span>
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-pill">HTML</div>
+        <div class="skill-pill">CSS</div>
+        <div class="skill-pill">JavaScript</div>
+        <div class="skill-pill">Responsive Design</div>
+        <div class="skill-pill">Backend Development</div>
+        <div class="skill-pill">Problem Solving</div>
+      </div>
+      <!-- <div class="resume-row">
+      <a href="#" class="btn btn-primary">View Resume</a>
+      <a href="#" class="btn btn-secondary">Download Resume</a>
+    </div> -->
+      <div class="resume-row">
+        <a href="./goutham1--resume.pdf" target="_blank" class="btn btn-primary">
+          View Resume
+        </a>
+    
+        <a href="./goutham1--resume.pdf" download class="btn btn-secondary">
+    Download Resume
+</a>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <span class="section-tag mono">04</span>
+          <h2 class="section-title" style="margin-bottom:20px;">Contact</h2>
+          <p>payyavulgowtham13@gmail.com</p>
+          <p>Phone: +91 94948 34471</p>
+          <a href="https://github.com/gowtham-payyavula" target="_blank">github.com/gowtham-payyavula</a>
+          <a href="https://www.linkedin.com/in/payyavula-gowtham-191310oct/" target="_blank">Linkedin</a>
+
+          <p>Gowthami Nagar 2nd Line, Krishna Lanka, Vijayawada, 520013</p>
+        </div>
+      </div>
+      <p class="copyright mono">© 2026 Gowtham Payyavula.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navlinks = document.getElementById('navlinks');
+    menuBtn.addEventListener('click', () => {
+      navlinks.classList.toggle('open');
+    });
+    navlinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navlinks.classList.remove('open'));
+    });
+  </script>
+
+</body>
+
+</html>
